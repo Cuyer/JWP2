@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>TODO List</h1>
+    <form>
+        <input type="text" name="content" placeholder="New task" required>
+        <button type="submit">Add</button>
+    </form>
+    <ul id="task-list">
+        {% for task in tasks %}
+            <li>
+                <input type="text" class="task-content" value="{{ task[1] }}">
+                <button class="edit-btn" data-id="{{ task[0] }}">Edit</button>
+                <button class="delete-btn" data-id="{{ task[0] }}">Delete</button>
+            </li>
+        {% endfor %}
+    </ul>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
